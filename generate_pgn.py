@@ -3,8 +3,8 @@ import chess.polyglot
 import random
 from datetime import datetime
 
-BOOK_PATH = "books/antichess.bin"
-OUTPUT_PATH = "antichess.pgn"
+BOOK_PATH = "books/atomic.bin"
+OUTPUT_PATH = "atomic.pgn"
 GAMES = 100
 MAX_MOVES = 40
 
