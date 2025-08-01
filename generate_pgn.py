@@ -4,7 +4,7 @@ import chess.pgn
 import os
 
 BOOK_PATH = "books/antichess.bin"
-OUTPUT_PATH = "output/antichess.pgn"
+OUTPUT_PATH = "antichess.pgn"
 GAMES = 100
 MAX_MOVES = 40
 
