@@ -1,18 +1,20 @@
 import chess
 import chess.polyglot
 import chess.pgn
-from chess.variant import AntichessBoard  # from python-chess-variants
+import os
 
 BOOK_PATH = "books/antichess.bin"
 OUTPUT_PATH = "output/antichess.pgn"
-GAMES = 100  # Number of games
+GAMES = 100
 MAX_MOVES = 40
+
+os.makedirs("output", exist_ok=True)
 
 reader = chess.polyglot.open_reader(BOOK_PATH)
 
 with open(OUTPUT_PATH, "w", encoding="utf-8") as out:
     for game_index in range(GAMES):
-        board = AntichessBoard()  # Antichess variant
+        board = chess.Board()  # Standard board
         game = chess.pgn.Game()
         node = game
 
@@ -25,11 +27,7 @@ with open(OUTPUT_PATH, "w", encoding="utf-8") as out:
             except IndexError:
                 break
 
-        game.headers["Event"] = "Antichess Book Extraction"
-        game.headers["Site"] = "Generated from Polyglot"
+        game.headers["Event"] = "Book Extraction"
         game.headers["Round"] = str(game_index + 1)
-        game.headers["White"] = "Book"
-        game.headers["Black"] = "Book"
         game.headers["Result"] = "*"
-
         print(game, file=out, end="\n\n")
