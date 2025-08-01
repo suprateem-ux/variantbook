@@ -16,7 +16,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install python-chess
-        run: pip install python-chess
+        run: pip install python-chess python-chess-variants
 
       - name: Generate PGN
         run: |
