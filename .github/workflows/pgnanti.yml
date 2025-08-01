@@ -1,0 +1,30 @@
+name: Generate Antichess PGN
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install python-chess
+        run: pip install python-chess
+
+      - name: Generate PGN
+        run: |
+          mkdir -p output
+          python generate_pgn.py
+
+      - name: Upload PGN Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: antichess-pgn
+          path: output/antichess.pgn
